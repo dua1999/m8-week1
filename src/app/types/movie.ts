@@ -6,4 +6,10 @@ export type Movie ={
     image_url:string
     rating:number
     genre:string
+    actors:string
+    desc:string
+    directors:string
+    thumbnail_url:string
+    imbd_url:string
 }
+

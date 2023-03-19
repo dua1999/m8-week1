@@ -3,25 +3,37 @@ import { Movie } from './types/movie';
 import styles from './page.module.css';
 import { text } from 'stream/consumers';
 import SearchBar from './components/SearchBar';
+import { useState } from 'react';
+
 
 const getMovies = async () => {
   const api = await fetch(
     'https://raw.githubusercontent.com/theapache64/top250/master/top250_min.json'
-  );
+  ) ;
+  
   const movies = await api.json();
+  const sort = movies.sort((a:number,b:number)=>{
+    return a-b
+})
   return movies as Movie[];
+ 
+  
+ 
 };
 
 export default async function Home() {
   const movies = await getMovies();
  
+ 
   return (
+    
     <main className={styles.main}>
     <div>  <SearchBar /></div>
       <br />
-      {movies.map((movie, index) => (
+     {movies.map((movie, index) => (
         <>
-        
+       
+       
           <head>
             <style>
               @import
